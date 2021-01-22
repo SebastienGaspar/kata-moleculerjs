@@ -3,9 +3,34 @@
 # kata
 This is a [Moleculer](https://moleculer.services/)-based microservices project. Generated with the [Moleculer CLI](https://moleculer.services/docs/0.14/moleculer-cli.html).
 
+To start it:
+ * run `$npm i`
+ * run `$docker-compose up` to up the whole stack needed
+ * Get the name of the container for the service: `gophertown`
+ * run `$docker exec -it CONTAINER_NAME moleculer connects nats://nats:4222` to connect to the REPL
+ * Start the Kata
+
+## Definition
+
+We want to create a small *town*:
+    * A town object should have a name and a width/height definition
+    * Create an action to handle the creation of the town on memory
+    * Create an action to get a town data
+
+Add gophers
+    * Create an action to add a gopher to a town: a gopher have a name(hash/id) and a position (x,y)
+    * Create an action to get list all gophers created
+
+Add move a gopher to a town:
+    * Create an action on the gophers to move them to a town (so the town need to follow the list of the living gophers)
+    * Add the posibility to create the gopher directly inside a town
+
+Add start using events:
+    * Delete all action calls made from one service to an other service.
+
 ## Usage
-Start the project with `npm run dev` command. 
-After starting, open the http://localhost:3000/ URL in your browser. 
+Start the project with `npm run dev` command.
+After starting, open the http://localhost:3000/ URL in your browser.
 On the welcome page you can test the generated services via API Gateway and check the nodes & services.
 
 In the terminal, try the following commands:
