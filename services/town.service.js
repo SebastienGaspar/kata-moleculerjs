@@ -40,8 +40,9 @@ module.exports = {
 	 * Events
 	 */
 	events: {
-		async "some.thing"(ctx) {
-			this.logger.info("Something happened", ctx.params);
+		async "**"(ctx) {
+			this.logger.info("Something happened", Object.keys(ctx));
+			this.logger.info("Something happened", ctx.eventName, ctx.eventGroups);
 		}
 	},
 

@@ -31,7 +31,19 @@ module.exports = {
 		*/
 		test: {
 			async handler(ctx) {
-				return "Gopher Machine";
+				ctx.emit("some.thing1", {});
+				const pipo = await this.pipo();
+				const town = await ctx.call("town.test");
+				return `Gopher Machine: ${town} - ${pipo}`;
+			}
+		},
+		sum: {
+			params: {
+				a: "number",
+				b: "number"
+			},
+			async handler(ctx) {
+				return ctx.params.a + ctx.params.b;
 			}
 		}
 	},
@@ -40,7 +52,7 @@ module.exports = {
 	 * Events
 	 */
 	events: {
-		async "some.thing"(ctx) {
+		async "some.*"(ctx) {
 			this.logger.info("Something happened", ctx.params);
 		}
 	},
@@ -49,7 +61,9 @@ module.exports = {
 	 * Methods
 	 */
 	methods: {
-
+		pipo() {
+			return "pipo";
+		}
 	},
 
 	/**
